@@ -1,0 +1,337 @@
+/* keyboard.css - Dark Nebula Glassmorphism Theme for Fancy Keyboard */
+
+:root {
+  --bg-opacity: 0.85;
+  --glass-blur: 16px;
+  --accent-color: #8a2be2;
+  --accent-gradient-start: #7b2cbf;
+  --accent-gradient-end: #3a0ca3;
+  --keyboard-bg: rgba(18, 14, 38, var(--bg-opacity));
+  --key-bg: rgba(255, 255, 255, 0.09);
+  --key-special-bg: rgba(255, 255, 255, 0.16);
+  --key-active-bg: rgba(255, 255, 255, 0.28);
+  --key-border: rgba(255, 255, 255, 0.18);
+  --text-color: #ffffff;
+  --text-sub: #c0c4e0;
+  --radius-key: 7px;
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+.keyboard-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: var(--keyboard-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-top: 1px solid var(--key-border);
+  padding: 4px 3px 6px 3px;
+  position: relative;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Glassmorphism off override */
+.glass-off .keyboard-container {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: #120e26 !important;
+}
+
+/* Toolbar header */
+.keyboard-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  padding: 0 4px;
+  margin-bottom: 4px;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toolbar-btn {
+  height: 32px;
+  min-width: 38px;
+  padding: 0 8px;
+  border-radius: 16px;
+  background: var(--key-bg);
+  border: 1px solid var(--key-border);
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.toolbar-btn:active {
+  background: var(--key-active-bg);
+  transform: scale(0.95);
+}
+
+.font-switcher-btn {
+  background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 14px;
+  min-width: 64px;
+  box-shadow: 0 2px 8px rgba(123, 44, 191, 0.4);
+}
+
+.font-switcher-btn span.font-label {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.active-font-badge {
+  font-size: 11px;
+  color: var(--text-sub);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 110px;
+}
+
+/* Rows & Layout */
+.keyboard-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 6px;
+  justify-content: space-between;
+}
+
+.keyboard-row {
+  display: flex;
+  width: 100%;
+  gap: 4px;
+  justify-content: center;
+  flex: 1;
+}
+
+/* Keys */
+.key {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--key-bg);
+  border: 1px solid var(--key-border);
+  border-radius: var(--radius-key);
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.1s ease, transform 0.05s ease;
+  min-width: 0;
+}
+
+.key:active, .key.pressed {
+  background: var(--key-active-bg);
+  transform: translateY(1px);
+}
+
+.key-sub {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 9px;
+  color: var(--text-sub);
+  opacity: 0.7;
+}
+
+/* Special keys */
+.key-special {
+  background: var(--key-special-bg);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.key-shift.active {
+  background: #ffffff;
+  color: #120e26;
+  border-color: #ffffff;
+}
+
+.key-shift.capslock {
+  background: var(--accent-gradient-start);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+.key-space {
+  flex: 4;
+  font-size: 13px;
+  color: var(--text-sub);
+}
+
+.key-enter {
+  flex: 1.5;
+  background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: bold;
+}
+
+.key-backspace {
+  flex: 1.3;
+}
+
+.key-globe {
+  flex: 1;
+}
+
+/* Top number row keys (slightly smaller text) */
+.num-row .key {
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Key Popup Preview Bubble */
+.key-preview {
+  position: absolute;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--accent-gradient-start), var(--accent-gradient-end));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -100%);
+  margin-top: -8px;
+}
+
+.key-preview::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: var(--accent-gradient-end) transparent transparent transparent;
+}
+
+/* Modal Font Selector Popup Grid */
+.modal-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 8, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 2000;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.modal-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-sub);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.font-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  overflow-y: auto;
+  flex: 1;
+  padding-right: 2px;
+}
+
+.font-card {
+  background: var(--key-bg);
+  border: 1px solid var(--key-border);
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.font-card:active, .font-card.active {
+  background: var(--key-active-bg);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.4);
+}
+
+.font-card-name {
+  font-size: 11px;
+  color: var(--text-sub);
+}
+
+.font-card-sample {
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Icons */
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: middle;
+}

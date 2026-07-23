@@ -1,0 +1,6 @@
+{
+  "name": "Fancy Keyboard IME",
+  "description": "Android Custom Keyboard (IME) with Gboard layout, Unicode font switcher, glassmorphism theme, and settings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
